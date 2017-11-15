@@ -11,5 +11,8 @@
   },
   "scripts": {
     "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.4"
   }
 }
