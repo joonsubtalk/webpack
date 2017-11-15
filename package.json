@@ -10,7 +10,8 @@
     "webpack": "^3.8.1"
   },
   "scripts": {
-    "build": "webpack"
+    "start": "webpack-dev-server --env development",
+    "build": "webpack --env production"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.9.4"
