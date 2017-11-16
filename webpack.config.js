@@ -6,6 +6,8 @@ const PATHS = {
   build: path.join(__dirname, 'build'),
 };
 
+
+
 const commonConfig = {
   entry: {
     app: PATHS.app,
@@ -21,11 +23,42 @@ const commonConfig = {
   ],
 };
 
-module.exports = (env) => {
-  console.log('env', env);
-  // Entries have to resolve to files! They rely on Node
-  // convention by default so if a directory contains *index.js*,
-  // it resolves to that.
+const productionConfig = () => commonConfig;
 
-  return commonConfig;
+const developmentConfig = () => {
+  const config = {
+    devServer: {
+      // Enable history API fallback so HTML5 History API based
+      // routing works. Good for complex setups.
+      historyApiFallback: true,
+
+      // Display only errors to reduce the amount of output
+      stats: 'errors-only',
+
+      // Parse host and port from env to allow customization.
+      //
+      // If Docker is used, Vagrant or Cloud9, set host:
+      // options. host || '0.0.0.0';
+      //
+      // 0.0.0.0 is available to all network devices
+      // unlike default `localhost`.
+      host: process.env.HOST, // Defaults to `localhost`
+      port: process.env.PORT, // Defaults to 8080
+    }
+  };
+  return Object.assign(
+    {},
+    commonConfig,
+    config
+  );
+};
+
+module.exports = (env) => {
+
+  if (env === 'production') {
+    return productionConfig();
+  }
+
+  return developmentConfig();
+
 }
