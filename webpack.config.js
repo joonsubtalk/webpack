@@ -6,8 +6,6 @@ const PATHS = {
   build: path.join(__dirname, 'build'),
 };
 
-
-
 const commonConfig = {
   entry: {
     app: PATHS.app,
