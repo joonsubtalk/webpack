@@ -34,6 +34,11 @@ const developmentConfig = () => {
 			// Display only errors to reduce the amount of output
 			stats : 'errors-only',
 
+			// Custom headers
+			headers : {
+				"X-Custom-Foo" : "bar",
+			},
+
 			// Parse host and port from env to allow customization.
 			//
 			// If Docker is used, Vagrant or Cloud9, set host:
