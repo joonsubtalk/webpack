@@ -39,6 +39,11 @@ const developmentConfig = () => {
 				"X-Custom-Foo" : "bar",
 			},
 
+			overlay : {
+				errors : true,
+				warnings : true,
+			},
+
 			// Parse host and port from env to allow customization.
 			//
 			// If Docker is used, Vagrant or Cloud9, set host:
